@@ -33,9 +33,26 @@ publishing {
     }
 }
 
+java {
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(11))
+    }
+}
+
 tasks {
     java {
         withSourcesJar()
+    }
+
+    withType<JavaCompile> {
+        options.encoding = Charsets.UTF_8.name()
+        options.release.set(11)
+    }
+    withType<Javadoc> {
+        options.encoding = Charsets.UTF_8.name()
+    }
+    withType<ProcessResources> {
+        filteringCharset = Charsets.UTF_8.name()
     }
 }
 

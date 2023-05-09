@@ -19,7 +19,6 @@ import java.util.Properties;
 public class Installer {
 
     public static void transferPatchInfo(final Path sourcePaperclipPath, final Path destinationPaperclipPath, String version) {
-        System.out.println("transferring from " + sourcePaperclipPath + " to " + destinationPaperclipPath);
         try (FileSystem sourceFileSystem = FileSystems.newFileSystem(URI.create("jar:file:" + sourcePaperclipPath.toAbsolutePath()), Map.of("create", "true"))) {
             try (FileSystem destFileSystem = FileSystems.newFileSystem(URI.create("jar:file:" + destinationPaperclipPath.toAbsolutePath()), Map.of("create", "true"))) {
                 Files.copy(
